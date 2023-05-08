@@ -2,8 +2,11 @@ const path = require("path");
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-
 const express = require("express");
+const testRoutes = require("./routes/test/index.js");
+
+require("dotenv").config();
+
 const app = express();
 
 app.use(morgan("dev"));
@@ -13,6 +16,7 @@ app.use(cookieParser());
 app.set("views", path.join(__dirname, "backend", "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "backend", "static")));
+app.use("/test",testRoutes)
 
 const rootRoutes = require("./backend/routes/root");
 app.use("/", rootRoutes);
