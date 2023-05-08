@@ -27,9 +27,7 @@
     "morgan": "^1.10.0",
     "node-pg-migrate": "^6.2.2",
     "pg": "^8.10.0",
-    "pug": "^3.0.2"
-  },
-  "devDependencies": {
+    "pug": "^3.0.2",
     "babel-loader": "^9.1.2",
     "concurrently": "^8.0.1",
     "connect-livereload": "^0.6.1",
