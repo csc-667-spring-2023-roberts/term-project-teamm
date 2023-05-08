@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const express = require("express");
 const livereload = "livereload";
 const connectLiveReload = "connect-livereload";
-const testRoutes = require("./routes/test/index.js");
+const testRoutes = require("./static/index.js");
 
 const gameRoutes = require("./routes/static/game.js");
 const homeRoutes = require("./routes/static/home.js");
@@ -14,6 +14,7 @@ const profileRoutes = require("./routes/static/profile.js");
 const signUpRoutes = require("./routes/static/sign-up.js");
 
 require("dotenv").config();
+const db = require("./db/connection.js");
 
 const app = express();
 
@@ -45,7 +46,7 @@ app.use("/games", gameRoutes);
 app.use("/lobby", lobbyRoutes);
 app.use("/profile", profileRoutes);
 app.use("/sign-up", signUpRoutes);
-// app.use("/test", testRoutes);
+app.use("/test", testRoutes);
 
 const rootRoutes = require("./routes/root");
 app.use("/", rootRoutes);
