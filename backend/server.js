@@ -33,13 +33,14 @@ if (process.env.NODE_ENV === "development") {
   app.use(connectLiveReload());
 }
 
+// const testRoutes = require("./routes/testing/index");
 app.set("views", path.join(".", "backend", "views"));
 app.set("view engine", "ejs");
-
 app.use(express.static(path.join(__dirname, "backend", "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
+// app.use("/test", testRoutes);
 
 app.use((request, response, next) => {
   next(createError(404));

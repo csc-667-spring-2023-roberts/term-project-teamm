@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
-    "start:dev": "concurrently \"npm server:dev\" \"npm:build:dev\"",
+    "start:dev": "concurrently \"npm:server:dev\" \"npm:build:dev\"",
     "server:dev": "NODE_ENV=development nodemon --watch backend backend/server.js",
     "build": "webpack",
     "build:dev": "webpack --watch",
