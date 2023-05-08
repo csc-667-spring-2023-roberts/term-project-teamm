@@ -8,6 +8,7 @@ const connectLiveReload = require("connect-livereload");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,36 +19,31 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "development") {
-    const livereload = require("livereload");
-    const connectLiveReload = require("connect-livereload");
-  
-    const liveReloadServer = livereload.createServer();
-    liveReloadServer.watch(path.join(__dirname, "backend", "static"));
-    liveReloadServer.server.once("connection", () => {
-      setTimeout(() => {
-        liveReloadServer.refresh("/");
-      }, 100);
-    });
-  
-    app.use(connectLiveReload());
-  }
+  const livereload = require("livereload");
+  const connectLiveReload = require("connect-livereload");
 
-app.set("views", path.join(".","backend", "views" ));
+  const liveReloadServer = livereload.createServer();
+  liveReloadServer.watch(path.join(__dirname, "backend", "static"));
+  liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+      liveReloadServer.refresh("/");
+    }, 100);
+  });
+
+  app.use(connectLiveReload());
+}
+
+app.set("views", path.join(".", "backend", "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "backend", "static")));
 
-
-
 app.use(requestTime);
-app.use("/",homeRoutes);
-
+app.use("/", homeRoutes);
 
 app.use((request, response, next) => {
-next(createError(404));
+  next(createError(404));
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
