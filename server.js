@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const express = require("express");
 const livereload = "livereload";
 const connectLiveReload = "connect-livereload";
-const testRoutes = require("backend/routes/test/index.js");
+// const testRoutes = require("backend/routes/test/index.js");
 
 require("dotenv").config();
 
@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.set("views", path.join(__dirname, "backend", "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "backend", "static")));
-app.use("/test", testRoutes);
+// app.use("/test", testRoutes);
 
 const rootRoutes = require("./backend/routes/root");
 app.use("/", rootRoutes);
