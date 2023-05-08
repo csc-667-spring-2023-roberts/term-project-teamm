@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (_request, response) => {
-  response.render("home", {
-    title: "Hi World!",
-    message: "Our first template.",
+  response.render("sign-up", {
+    title: "Term Project (Sign Up)",
   });
 });
 
