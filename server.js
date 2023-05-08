@@ -3,8 +3,8 @@ const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const express = require("express");
-import livereload from "livereload";
-import connectLiveReload from "connect-livereload";
+const livereload = "livereload";
+const connectLiveReload = "connect-livereload";
 const testRoutes = require("./routes/test/index.js");
 
 require("dotenv").config();
