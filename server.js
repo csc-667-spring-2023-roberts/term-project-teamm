@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const express = require("express");
 const livereload = "livereload";
 const connectLiveReload = "connect-livereload";
-const testRoutes = require("./routes/test/index.js");
+const testRoutes = require("backend/routes/test/index.js");
 
 require("dotenv").config();
 
