@@ -7,8 +7,10 @@ const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const testRoutes = require("./routes/testing/index");
 
 require("dotenv").config();
+const db = require("./db/connection.js");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -40,7 +42,7 @@ app.use(express.static(path.join(__dirname, "backend", "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
-// app.use("/test", testRoutes);
+app.use("/test", testRoutes);
 
 app.use((request, response, next) => {
   next(createError(404));
