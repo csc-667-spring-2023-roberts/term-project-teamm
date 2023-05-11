@@ -7,7 +7,7 @@ exports.up = (pgm) => {
   pgm.createTable("users", {
     id: "id",
     username: {
-      type: "varchar(256)",
+      type: "varchar(50)",
       notNull: true,
     },
     email: {
@@ -16,7 +16,7 @@ exports.up = (pgm) => {
       unique: true,
     },
     password: {
-      type: "char(76)",
+      type: "char(60)",
       notNull: true,
     },
     created_at: {
