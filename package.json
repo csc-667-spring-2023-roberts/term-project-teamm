@@ -12,9 +12,9 @@
     "build:dev": "webpack --watch",
     "prepare": "husky install",
     "db:create": "node-pg-migrate create -- ",
-    "db:migrate": "node-pg-migrate up",
+    "db:migrate": "node-pg-migrate up --no-check-order ",
     "db:rollback": "node-pg-migrate down",
-    "postinstall": "npm run db:migrate --no-check-order"
+    "postinstall": "npm run db:migrate "
   },
   "author": "",
   "dependencies": {
