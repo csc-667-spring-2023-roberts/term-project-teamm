@@ -13,13 +13,13 @@
     "prepare": "husky install",
     "db:create": "node-pg-migrate create -- ",
     "db:migrate": "node-pg-migrate up",
-    "db:rollback": "node-pg-migrate down"
+    "db:rollback": "node-pg-migrate down",
+    "postinstall": "npm run db:migrate"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "babel-loader": "^9.1.2",
+    "bcrypt": "^5.1.0",
     "concurrently": "^8.0.1",
     "connect-livereload": "^0.6.1",
     "connect-pg-simple": "^8.0.0",

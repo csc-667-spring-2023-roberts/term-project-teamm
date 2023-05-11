@@ -8,11 +8,10 @@ const connectLiveReload = require("connect-livereload");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
-//const testRoutes = require("./routes/testing/index");
 const gamesRoutes = require("./routes/static/games");
 const lobbyRoutes = require("./routes/static/lobby");
 const profileRoutes = require("./routes/static/profile");
-const signUpRoutes = require("./routes/static/sign-up");
+const authenticationRoutes = require("./routes/static/authentication");
 
 require("dotenv").config();
 const db = require("./db/connection.js");
@@ -47,11 +46,10 @@ app.use(express.static(path.join(__dirname, "backend", "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
-//app.use("/test", testRoutes);
 app.use("/games", gamesRoutes);
 app.use("/lobby", lobbyRoutes);
-app.use("/sign-up", signUpRoutes);
-app.use("profile", profileRoutes);
+app.use("/authentication", authenticationRoutes);
+app.use("/profile", profileRoutes);
 
 app.use((request, response, next) => {
   next(createError(404));

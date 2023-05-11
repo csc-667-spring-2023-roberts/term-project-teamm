@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-    <h1>Sign up (authenticated)</h1>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Register page (unauthenticated)</h1>
+
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/lobby">Lobby</a></li>
-        <li><a href="/sign-up">Sign up</a></li>
-        <li><a href="/games/42">Games</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/games/42">Games 42</a></li>
+      <li><a href="/lobby">Lobby</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/authentication/login">Log In</a></li>
     </ul>
-</body>
+
+    <form method="post" action="/authentication/sign-up">
+      <label>
+        <em>Username</em>
+        <input name="username" autocomplete="username" placeholder="Username" />
+      </label>
+      <label>
+        <em>Email</em>
+        <input name="email" autocomplete="email" placeholder="Email address" />
+      </label>
+      <label>
+        <em>Password</em>
+        <input name="password" type="password" autocomplete="new-password" />
+      </label>
+      <input type="submit" value="Register" />
+    </form>
+  </body>
 </html>
