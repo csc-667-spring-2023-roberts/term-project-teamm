@@ -1,24 +1,37 @@
 const express = require("express");
 const path = require("path");
-const homeRoutes = require("./routes/static/home");
+const session = require("express-session");
+const pgSession = require("connect-pg-simple")(session);
+
 const requestTime = require("./middleware/request-time");
 const createError = require("http-errors");
+
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
+require("dotenv").config();
+const db = require("./db/connection");
+
+const homeRoutes = require("./routes/static/home");
 const gamesRoutes = require("./routes/static/games");
 const lobbyRoutes = require("./routes/static/lobby");
 const profileRoutes = require("./routes/static/profile");
 const authenticationRoutes = require("./routes/static/authentication");
 
-require("dotenv").config();
-const db = require("./db/connection.js");
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(
+  session({
+    store: new pgSession({ pgPromise: db }),
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+  })
+);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

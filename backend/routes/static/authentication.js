@@ -13,6 +13,12 @@ router.get("/sign-up", (_request, response) => {
 router.get("/login", (_request, response) => {
   response.render("login", { title: "Term Project" });
 });
+router.get("/logout", (request, response) => {
+  request.session.destroy((error) => {
+    console.log({ error });
+  });
+  response.redirect("/");
+});
 
 router.post("/sign-up", async (request, response) => {
   const { username, email, password } = request.body;
@@ -23,6 +29,11 @@ router.post("/sign-up", async (request, response) => {
 
   try {
     const { id } = await Users.create(username, email, hash);
+    request.session.user = {
+      id,
+      username,
+      email,
+    };
     response.redirect("/lobby");
   } catch (error) {
     console.log({ error });
@@ -41,19 +52,15 @@ router.post("/login", async (request, response) => {
   const { email, password } = request.body;
 
   try {
-    const user = await Users.findByEmail(email);
-    console.log({ user });
-    const isValidUser = bcrypt.compareSync(password, user.password);
-    console.log("[", user.password, "]");
-    console.log({ password });
-    console.log({ email, isValidUser });
+    const { id, username, password: hash } = await Users.findByEmail(email);
+    const isValidUser = bcrypt.compareSync(password, hash);
 
     if (isValidUser) {
-      //   request.session.user = {
-      //     id,
-      //     username,
-      //     email,
-      //   };
+      request.session.user = {
+        id,
+        username,
+        email,
+      };
       response.redirect("/lobby");
     } else {
       throw "User did not provide valid credentials";
