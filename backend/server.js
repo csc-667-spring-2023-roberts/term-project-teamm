@@ -13,6 +13,7 @@ const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 const db = require("./db/connection");
+const requireAuthentication = require("./middleware/require-authentication");
 
 const homeRoutes = require("./routes/static/home");
 const gamesRoutes = require("./routes/static/games");
@@ -59,8 +60,8 @@ app.use(express.static(path.join(__dirname, "backend", "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
-app.use("/games", gamesRoutes);
-app.use("/lobby", lobbyRoutes);
+app.use("/games", requireAuthentication, gamesRoutes);
+app.use("/lobby", requireAuthentication, lobbyRoutes);
 app.use("/authentication", authenticationRoutes);
 app.use("/profile", profileRoutes);
 
