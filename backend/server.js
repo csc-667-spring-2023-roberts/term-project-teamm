@@ -1,10 +1,12 @@
 const express = require("express");
+const createError = require("http-errors");
 const path = require("path");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
+const http = require("http");
+const { Server } = require("socket.io");
 
 const requestTime = require("./middleware/request-time");
-const createError = require("http-errors");
 
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
@@ -24,19 +26,25 @@ const authenticationRoutes = require("./routes/static/authentication");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(
-  session({
-    store: new pgSession({ pgPromise: db }),
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 },
-  })
-);
+const sessionMiddleWare = session({
+  store: new pgSession({ pgPromise: db }),
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
+});
+app.use(sessionMiddleWare);
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+const server = http.createServer(app);
+const io = new Server(server);
+io.engine.use(sessionMiddleWare);
+io.on("connection", (_socket) => {
+  console.log("Connection");
+});
 
 if (process.env.NODE_ENV === "development") {
   const livereload = require("livereload");
@@ -69,6 +77,6 @@ app.use((request, response, next) => {
   next(createError(404));
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

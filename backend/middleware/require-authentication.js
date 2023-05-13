@@ -3,6 +3,7 @@ const requireAuthentication = (request, response, next) => {
 
   if (user === undefined || user === null) {
     console.log("you stuck");
+    console.log({ user });
     response.redirect("/authentication/login");
   } else {
     next();
