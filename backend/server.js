@@ -22,6 +22,7 @@ const gamesRoutes = require("./routes/static/games");
 const lobbyRoutes = require("./routes/static/lobby");
 const profileRoutes = require("./routes/static/profile");
 const authenticationRoutes = require("./routes/static/authentication");
+const chatRoutes = require("./routes/static/chat");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -45,6 +46,8 @@ io.engine.use(sessionMiddleWare);
 io.on("connection", (_socket) => {
   console.log("Connection");
 });
+
+app.set("io", io);
 
 if (process.env.NODE_ENV === "development") {
   const livereload = require("livereload");
@@ -72,6 +75,7 @@ app.use("/games", requireAuthentication, gamesRoutes);
 app.use("/lobby", requireAuthentication, lobbyRoutes);
 app.use("/authentication", authenticationRoutes);
 app.use("/profile", profileRoutes);
+app.use("/chat", requireAuthentication, chatRoutes);
 
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
