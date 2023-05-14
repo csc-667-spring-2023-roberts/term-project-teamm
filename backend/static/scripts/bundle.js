@@ -407,11 +407,11 @@
         ? (t) => Promise.resolve().then(t)
         : (t, e) => e(t, 0),
     M = g.WebSocket || g.MozWebSocket,
-    U =
+    V =
       "undefined" != typeof navigator &&
       "string" == typeof navigator.product &&
       "reactnative" === navigator.product.toLowerCase(),
-    V = {
+    U = {
       websocket: class extends _ {
         constructor(t) {
           super(t), (this.supportsBinary = !t.forceBase64);
@@ -423,7 +423,7 @@
           if (!this.check()) return;
           const t = this.uri(),
             e = this.opts.protocols,
-            s = U
+            s = V
               ? {}
               : m(
                   this.opts,
@@ -445,7 +445,7 @@
                 );
           this.opts.extraHeaders && (s.headers = this.opts.extraHeaders);
           try {
-            this.ws = U ? new M(t, e, s) : e ? new M(t, e) : new M(t);
+            this.ws = V ? new M(t, e, s) : e ? new M(t, e) : new M(t);
           } catch (t) {
             return this.emitReserved("error", t);
           }
@@ -805,7 +805,7 @@
         secure: this.secure,
         port: this.port,
       });
-      return new V[t](s);
+      return new U[t](s);
     }
     open() {
       let t;
@@ -1947,18 +1947,19 @@
     );
   }
   Object.assign(yt, { Manager: dt, Socket: ut, io: yt, connect: yt }),
-    console.log("Bundle with progressive"),
     yt(),
-    document.querySelector("input#chatMessage").addEventListener("key", (t) => {
-      if (13 === t.keycode) {
-        const e = t.target.value;
-        console.log("YOU ARE HERE"),
-          console.log({ message: e }),
+    console.log("This is the front end"),
+    document
+      .querySelector("input#chatMessage")
+      .addEventListener("keydown", (t) => {
+        if (13 === t.keyCode) {
+          const e = t.target.value;
           (t.target.value = ""),
-          fetch("/chat/0", {
-            method: "post",
-            body: JSON.stringify({ message: e }),
-          });
-      }
-    });
+            fetch("/chat/0", {
+              method: "post",
+              body: JSON.stringify({ message: e }),
+              headers: { "Content-Type": "application/json" },
+            });
+        }
+      });
 })();
