@@ -62,9 +62,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // const testRoutes = require("./routes/testing/index");
-app.set("views", path.join(".", "backend", "views"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "backend", "static")));
+app.use(express.static(path.join(__dirname, "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
@@ -73,10 +73,10 @@ app.use("/lobby", requireAuthentication, lobbyRoutes);
 app.use("/authentication", authenticationRoutes);
 app.use("/profile", profileRoutes);
 
-app.use((request, response, next) => {
-  next(createError(404));
-});
-
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
+});
+
+app.use((request, response, next) => {
+  next(createError(404));
 });

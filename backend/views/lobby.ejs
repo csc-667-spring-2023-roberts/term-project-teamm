@@ -1,21 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <title><%= title %></title>
-</head>
-<body>
-    <h1>Lobby (authenticated)</h1>
+    <script src="/scripts/bundle.js" defer></script>
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+  </head>
+  <body>
+    <h1>Lobby Page (Authenticated)</h1>
+
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/lobby">Lobby</a></li>
-        <li><a href="/authentication/sign-up">Sign up</a></li>
-        <li><a href="/games/42">Games</a></li>
-        <li><a href="/authentication/login">Log In</a></li>
-        <li><a href="/authentication/logout">Logout</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/authentication/login">Login</a></li>
+      <li><a href="/authentication/sign-up">Sign Up</a></li>
+      <li><a href="/lobby">Lobby</a></li>
+      <li><a href="/games/42">Game (42)</a></li>
+      <li><a href="/authentication/logout">Logout</a></li>
     </ul>
 
-    <p>
-        You are: <%= username%> <%= email%> (<%= id%>)
-    </p>
-</body>
+    <p>You are: <%= username %> <%= email %> (<%= id %>)</p>
+
+    <div id="chat-container">
+      <div id="messages"></div>
+      <label>
+        <input id="chatMessage" name="chat-message" placeholder="Message..." />
+      </label>
+    </div>
+  </body>
 </html>
