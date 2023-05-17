@@ -1,28 +1,19 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/login.css" />
   </head>
   <body>
-    <h1>Login page (unauthenticated)</h1>
-
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/authentication/sign-up">Sign up</a></li>
-      <li><a href="/games/42">Games 42</a></li>
-      <li><a href="/lobby">Lobby</a></li>
-    </ul>
-
-    <form method="post" action="/authentication/login">
-        <label>
-            <em>Email</em>
-            <input name="email" autocomplete="email" placeholder="Email address" />
-          </label>
-      <label>
-        <em>Password</em>
-        <input name="password" type="password" autocomplete="current-password" />
-      </label>
-      <input type="submit" value="login" />
+    <form class='login'>
+      <div class="flex">
+        <ul>
+        <input id="username" class='input' placeholder='Username' type='text'>
+        <input id="password" class='input' placeholder='Password' type='password'>
+          <ul class='btn-1'><a href=""><span>LOGIN</span></a></ul>
+        </ul>
+    
+      </div>
     </form>
+    <a class='forgot' href='#'>Forgot password?</a>
   </body>
 </html>
