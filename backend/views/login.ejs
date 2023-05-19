@@ -1,20 +1,27 @@
 <html>
   <head>
     <title><%= title %></title>
-    <!-- <link rel="stylesheet" href="/stylesheets/login.css" /> -->
+    <link rel="stylesheet" href="/stylesheets/login.css" /> 
   </head>
-  <body>
-    <form method="post" action="/authentication/login">
-      <label>
-          <em>Email</em>
-          <input name="email" autocomplete="email" placeholder="Email address" />
+  <body> 
+    <form method="post" action="/authentication/login" class="login">
+      <div class = "flex">
+        <ul>
+        <label>
+          <input name="username" class='inputt' autocomplete="username" placeholder="Username" />
         </label>
-    <label>
-      <em>Password</em>
-      <input name="password" type="password" autocomplete="current-password" />
-    </label>
-    <input type="submit" value="login" />
+        <label>
+          <input name="password" class='inputt' type="password" autocomplete="current-password" placeholder = "Password" />
+        </label>
+          <ul class='btn-1'>
+          <a href="">
+              <input  type="submit" value="LOGIN">
+          </a>
+          </ul>
+      </ul>
+    </div>
+
   </form>
-    <!-- <a class='forgot' href='#'>Forgot password?</a> -->
+    <a class='forgot' href='#'>Forgot password?</a>
   </body>
 </html>
