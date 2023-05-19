@@ -1,6 +1,8 @@
 import io from "socket.io-client";
+import { gameCreatedHandler } from "./games/created";
 
 const socket = io();
+gameCreatedHandler(socket);
 
 const messageContainer = document.querySelector("#messages");
 
