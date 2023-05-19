@@ -113,7 +113,7 @@ span {
   position: absolute;
   top: 10px;
   left: -4px;
-  width: calc(100% + 12px);
+  width: calc(100% + 8px);
   height: calc(100% - 18px);
   background: linear-gradient(
        #12182a,
@@ -148,7 +148,7 @@ span {
   transform: scaleX(0);
 }
 
-input[type=submit]{
+.log{
   z-index:9;
   background: linear-gradient(
        #12182a,
@@ -159,10 +159,29 @@ input[type=submit]{
   color: #f2d1c3;
   cursor: pointer;
 }
+.sign{
+  z-index:9;
+  background: linear-gradient(
+       #12182a,
+       #1d192d
+    );
+  font-size: .65em;
+  border: none;
+  color: #f2d1c3;
+  cursor: pointer;
+  margin-left: 40px; 
+}
 .forgot {
   margin-top: 1em;
   color: #c49fb5;
-  font-size: .65em;
-  margin-left: 140px;
-  margin-top: -100px;
+   font-size: .65em;
+  margin-left: 50px;
+ /* margin-top: -80px; */
+  position: relative;
+}
+.text{
+  margin-top: 40px;
+  color: #c49fb5;
+   font-size: .65em;
+  margin-left: 8px; 
 }
