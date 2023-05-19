@@ -18,6 +18,7 @@ const db = require("./db/connection");
 const requireAuthentication = require("./middleware/require-authentication");
 
 const homeRoutes = require("./routes/static/home");
+const apiGamesRoutes = require("./routes/api/games");
 const gamesRoutes = require("./routes/static/games");
 const lobbyRoutes = require("./routes/static/lobby");
 const profileRoutes = require("./routes/static/profile");
@@ -71,6 +72,7 @@ app.use(express.static(path.join(__dirname, "static")));
 
 app.use(requestTime);
 app.use("/", homeRoutes);
+app.use("/api/games", requireAuthentication, apiGamesRoutes);
 app.use("/games", requireAuthentication, gamesRoutes);
 app.use("/lobby", requireAuthentication, lobbyRoutes);
 app.use("/authentication", authenticationRoutes);
