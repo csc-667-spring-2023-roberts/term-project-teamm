@@ -1,7 +1,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/signup.css" />
   </head>
   <body>
     <h1>Register page (unauthenticated)</h1>
@@ -14,20 +14,16 @@
       <li><a href="/authentication/login">Log In</a></li>
     </ul>
 
-    <form method="post" action="/authentication/sign-up">
-      <label>
-        <em>Username</em>
-        <input name="username" autocomplete="username" placeholder="Username" />
-      </label>
-      <label>
-        <em>Email</em>
-        <input name="email" autocomplete="email" placeholder="Email address" />
-      </label>
-      <label>
-        <em>Password</em>
-        <input name="password" type="password" autocomplete="new-password" />
-      </label>
-      <input type="submit" value="Register" />
+    <form class='login'>
+  <div class="flex">
+    <ul>
+    <input id="username" class='input' placeholder='Username' type='text'>
+    <input id="password" class='input' placeholder='Password' type='password'>
+      <ul class='btn-1'><a href=""><span>SIGN UP</span></a></ul>
+    </ul>
+
+  </div>
+</form>
     </form>
   </body>
 </html>

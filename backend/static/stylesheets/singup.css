@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
+
 html,
 body {
   height: 100%;
@@ -55,7 +58,7 @@ body {
   margin-bottom: 1em;
 }
 
-.inputt {
+.input {
   flex: 1;
   padding: 1em;
   border: 0;
@@ -79,7 +82,6 @@ body {
   flex-direction: column;
   margin-right: 125px;
   margin-top: 15px;
-  z-index: 1;
 }
 .btn-1 a {
   text-decoration: none;
@@ -92,12 +94,11 @@ body {
   letter-spacing: 4px;
   position: relative;
   display: inline-block;
-  z-index: 2;
 }
 
 span {
   position: relative;
-  z-index: 6;
+  z-index: 3;
 }
 
 .btn-1 a::before {
@@ -105,12 +106,11 @@ span {
   position: absolute;
   top: 10px;
   left: -4px;
-  width: calc(100% + 8px);
+  width: calc(100% + 12px);
   height: calc(100% - 18px);
   background: linear-gradient(#12182a, #1d192d);
   transition: all 0.5s ease-in-out;
   transform: scaleY(1);
-  z-index: -2;
 }
 
 .btn-1 a:hover::before {
@@ -127,41 +127,17 @@ span {
   background: linear-gradient(#12182a, #1d192d);
   transition: all 0.5s ease-in-out;
   transform: scaleX(1);
-  z-index: -2;
 }
 
 .btn-1 a:hover::after {
   transform: scaleX(0);
 }
 
-.log {
-  z-index: 9;
-  background: linear-gradient(#12182a, #1d192d);
-  font-size: 1em;
-  border: none;
-  color: #f2d1c3;
-  cursor: pointer;
-}
-.sign {
-  z-index: 9;
-  background: linear-gradient(#12182a, #1d192d);
-  font-size: 0.65em;
-  border: none;
-  color: #f2d1c3;
-  cursor: pointer;
-  margin-left: 40px;
-}
 .forgot {
   margin-top: 1em;
   color: #c49fb5;
   font-size: 0.65em;
-  margin-left: 50px;
-  /* margin-top: -80px; */
+  margin-left: 140px;
+  margin-top: -70px;
   position: relative;
-}
-.text {
-  margin-top: 40px;
-  color: #c49fb5;
-  font-size: 0.65em;
-  margin-left: 8px;
 }
