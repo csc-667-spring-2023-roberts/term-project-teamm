@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
-@import url(https://fonts.googleapis.com/css?family=Fjalla+One%27);
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One");
 
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -9,19 +9,79 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 1.3em;
 }
 
 h1 {
+  margin-top: -70px;
   margin-left: 69px;
   font-size: 150px;
-  background-image: linear-gradient(-30deg, #d7dcbe, #7981b0);
+  background-image: linear-gradient(40deg, #624e7f);
   background-size: 100%;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 4px black;
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+.login {
+  margin-top: 40px;
+  margin-right: 40px;
+  display: flex;
+  width: right;
+  height: top;
+  text-align: center;
+  justify-content: right;
+  align-items: right;
+}
+.login a {
+  font-size: 0.7em;
+  text-decoration: none;
+  background-color: #624e7f;
+  border: 3px solid #010100;
+  color: #000;
+  padding: 7px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  position: relative;
+  display: inline-block;
+  right: 4px;
+}
+
+.login a::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -4px;
+  width: calc(100% + 12px);
+  height: calc(100% - 20px);
+  background-color: #624e7f;
+  transition: all 0.5s ease-in-out;
+  transform: scaleY(1);
+}
+
+.login a:hover::before {
+  transform: scaleY(0);
+}
+
+.login a::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  width: calc(100% - 20px);
+  height: calc(100% + 20px);
+  background-color: #624e7f;
+  transition: all 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+
+.login a:hover::after {
+  transform: scaleX(0);
+}
+
 .btn-1 {
   width: center;
   height: center;
