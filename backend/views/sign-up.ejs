@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/home.css" />
@@ -26,6 +26,33 @@
         <input name="password" type="password" autocomplete="new-password" />
       </label>
       <input type="submit" value="Register" />
+    </form>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/signup.css" />
+  </head>
+  <body>
+    <ul class='home'><a href="/"><span>Home</span></a></ul>
+    <form  method="post" action="/authentication/sign-up" class='signup'>
+      <div class="flex">
+        <ul>
+          <input id="email" class='input' placeholder='Email' type='text'>
+          <input id="username" class='input' placeholder='Username' type='text'>
+          <input id="password" class='input' placeholder='Password' type='password'>
+          <ul class='btn-1'>
+              <a href="">
+                  <input class= 'sign' type="submit" value="SIGN UP">
+              </a>
+              </ul>
+          <br>
+            <ul><a class= 'text'> <span>Already have an account?</span></a></ul>
+            <a href="/authetication/login"><input  class= 'log' type="submit" value="LOGIN"></a>
+        </ul>
+      </div>
     </form>
   </body>
 </html>
