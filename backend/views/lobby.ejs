@@ -1,7 +1,7 @@
-<html>
+<!-- <html>
   <head>
     <script src="/scripts/bundle.js" defer></script>
-    <!-- <link rel="stylesheet" href="/stylesheets/home.css" /> -->
+     <link rel="stylesheet" href="/stylesheets/home.css" /> 
   </head>
   <body>
     <h1>Lobby</h1>
@@ -46,8 +46,91 @@
   <li><a href="#">Join <span>42</span></a></li>
 </template>
   </body>
-</html>
+</html> -->
 
+
+
+<!-- <html>
+  <head>
+    <form class='login'>
+      <div class="flex">
+        <ul class=profile>
+          
+          <div class= 'join'>
+            
+              <ul id="game-list"></ul>
+                  <div id="chat-container">
+                      <div id="messages"></div>
+                  </div>
+                  <template id="available-game-item">
+                    <li><a href="#">Join <span>42</span></a></li>
+                  </template>
+          
+              <ul class='btn-1'>
+                <a href=""><form method="post" action="/api/games/create">
+                  <input type="submit" value="Create Game" />
+                </form> </a>
+              </ul>
+            <div id="chat-container">
+               <div id="messages"></div>
+               <label><input id="chatMessage" name="chat-message" placeholder="Message..." </label>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </form>
+  </body>
+</html>
+ -->
+
+ <html>
+  <head>
+    <script src="/scripts/bundle.js" defer></script>
+    <link rel="stylesheet" href="/stylesheets/lobby.css" />
+  </head>
+    
+    <body>
+      <ul class='home'><a href="/"><span>Home</span></a></ul>
+      <div class="flex">
+        <ul class=profile>
+          <div class='join'>
+              <ul class='header'><span>Join Game:</span></ul>
+            <ul id="game-list" class='lit'>
+              <% for(let i = 0; i < games.length; i++) {%>
+                <li>
+                  <a href="/api/games/<%= games[i].id %>/join"
+                    >Join <span><%= games[i].id %></span></a
+                  >
+                </li>
+                <% } %>
+            </ul>
+            <template id="available-game-item">
+              <li><a href="#">Join <span>42</span></a></li>
+            </template>
+
+
+            <form method="post" action="/api/games/create">
+              <ul class='btn-1'>
+                <a href="">
+                  <form method="post" action="/api/games/create">
+                    <input type="submit" value="Create Game" class='create' />
+                  </form>
+                </a>
+              </ul>
+            </form>
+
+
+          </div>
+        </ul>
+        <div id="chat-container" >
+                <div id="messages"></div>
+                <label><input class='inputt' id="chatMessage" name="chat-message" placeholder="Message..." /></label>
+              </div>
+      </div>
+      </form>
+    </body>
+ 
+ </html>
 <!-- <html>
   <head>
     <form class='login'>
