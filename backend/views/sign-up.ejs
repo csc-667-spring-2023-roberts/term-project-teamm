@@ -1,35 +1,3 @@
-<!-- <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/home.css" />
-  </head>
-  <body>
-    <h1>Register page (unauthenticated)</h1>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/games/42">Games 42</a></li>
-      <li><a href="/lobby">Lobby</a></li>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/authentication/login">Log In</a></li>
-    </ul>
-    <form method="post" action="/authentication/sign-up">
-      <label>
-        <em>Username</em>
-        <input name="username" autocomplete="username" placeholder="Username" />
-      </label>
-      <label>
-        <em>Email</em>
-        <input name="email" autocomplete="email" placeholder="Email address" />
-      </label>
-      <label>
-        <em>Password</em>
-        <input name="password" type="password" autocomplete="new-password" />
-      </label>
-      <input type="submit" value="Register" />
-    </form>
-  </body>
-</html> -->
-
 <html>
   <head>
     <title><%= title %></title>
@@ -40,17 +8,17 @@
     <form  method="post" action="/authentication/sign-up" class='signup'>
       <div class="flex">
         <ul>
-          <input id="email" class='input' placeholder='Email' type='text'>
-          <input id="username" class='input' placeholder='Username' type='text'>
-          <input id="password" class='input' placeholder='Password' type='password'>
+          <input name="email" class='input' placeholder='Email' type='text'>
+          <input name="username" class='input' placeholder='Username' type='text'>
+          <input name="password" class='input' placeholder='Password' type='password' autocomplete="new-password">
           <ul class='btn-1'>
               <a href="">
-                  <input class= 'sign' type="submit" value="SIGN UP">
+                  <input class= 'sign' type="submit" value="Register">
               </a>
               </ul>
           <br>
             <ul><a class= 'text'> <span>Already have an account?</span></a></ul>
-            <a href="/authetication/login"><input  class= 'log' type="submit" value="LOGIN"></a>
+            <a href="/authentication/login"><input  class= 'log' value="LOGIN"></a>
         </ul>
       </div>
     </form>
