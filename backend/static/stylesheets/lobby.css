@@ -43,10 +43,7 @@ body {
   padding-right: 250px;
   padding-bottom: 100px;
   padding-left: 250px;
-  
 }
-
-
 
 .btn-1 {
   width: center;
@@ -120,44 +117,55 @@ span {
   cursor: pointer;
 }
 
-  .inputt {
-      flex: 3;
-      padding: 1em;
-      border: 0;
-      color: #8f8f8f;
-      font-size: 1rem;
-      margin-top:100px;
-      margin-left:20px;
-    }
-
-.lit{
-    z-index:9;
-    background: rgba(0 0, 0, 0);
-    font-size: 1.5em;
-    border: none;
-    color: #f2d1c3;
-    cursor: pointer;
-    padding:10px;
+.inputt {
+  flex: 3;
+  padding: 1em;
+  border: 0;
+  color: #8f8f8f;
+  font-size: 1rem;
+  margin-top: 100px;
+  margin-left: 20px;
 }
 
-.home{  
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-/*     position: relative; */
-    margin-top: 10px;
-    margin-left: 40px; 
-    font-size: 1em;
-    border: none;
-    color: #f2d1c3;
+.lit {
+  z-index: 9;
+  background: rgba(0 0, 0, 0);
+  font-size: 1.5em;
+  border: none;
+  color: #f2d1c3;
+  cursor: pointer;
+  padding: 10px;
 }
-.header{
-    z-index:9;
-    background: rgba(0 0, 0, 0);
-    font-size: 2em;
-    border: none;
-    color: #f2d1c3;
-    cursor: pointer;
-    margin-top: -80px;
-  
+
+.home {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  /*     position: relative; */
+  margin-top: 10px;
+  margin-left: 40px;
+  font-size: 1em;
+  border: none;
+  color: #f2d1c3;
+}
+.header {
+  z-index: 9;
+  background: rgba(0 0, 0, 0);
+  font-size: 2em;
+  border: none;
+  color: #f2d1c3;
+  cursor: pointer;
+  margin-top: -80px;
+}
+.messages {
+  background: rgba(1, 11, 1, 0.3);
+  width: clamp(500px, 10vw, 1000px);
+}
+.button:after {
+  background: rgba(1, 11, 1, 0.9);
+  width: clamp(500px, 10vw, 1000px);
+}
+.messages:hover:after {
+  background: rgba(1, 11, 1, 0.9);
+  width: clamp(500px, 10vw, 1000px);
 }
