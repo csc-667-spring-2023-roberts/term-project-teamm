@@ -14,7 +14,21 @@ const DRAW_CARDS =
 const DISCARD =
   "UPDATE game_hand SET user_id=-1 WHERE game_id=$1 AND card_id=$2";
 
-const deck = async (user_id) => {
+// const deck = async (user_id) => {
+
+// };
+
+const list = async (user_id) => await db.any(LIST_QUERY, [user_id]);
+
+const create = async (user_id) => {
+  const { id } = await db.one(
+    "INSERT INTO games (completed) VALUES (false) RETURNING *"
+  );
+  await db.none(
+    "INSERT INTO game_users (user_id, game_id,current_player) VALUES ($1,$2,true)",
+    [user_id, id]
+  );
+  //comment this out after creating first game
   const unoDeck = [];
 
   const colors = ["1", "2", "3", "4"];
@@ -68,19 +82,7 @@ const deck = async (user_id) => {
     );
     const values = [card.id, card.color, card.number];
   }
-};
-
-const list = async (user_id) => await db.any(LIST_QUERY, [user_id]);
-
-const create = async (user_id) => {
-  const { id } = await db.one(
-    "INSERT INTO games (completed) VALUES (false) RETURNING *"
-  );
-  await db.none(
-    "INSERT INTO game_users (user_id, game_id,current_player) VALUES ($1,$2,true)",
-    [user_id, id]
-  );
-
+  //comment out to this line
   await db.none(INITIAL_DECK, [id]);
   await db.none(DRAW_CARDS, [id, user_id]);
   const { card_id } = await db.one(
@@ -101,4 +103,4 @@ const join = async (game_id, user_id) => {
   await db.none(DRAW_CARDS, [game_id, user_id]);
 };
 
-module.exports = { create, list, join, deck };
+module.exports = { create, list, join };
