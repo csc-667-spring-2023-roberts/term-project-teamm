@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/gameTable.css" />
 </head>
 <body>
     <h1>Game <%= id %> (authenticated)</h1>
@@ -17,5 +17,14 @@
     <p>
         You are: <%= username%> <%= email%> (<%= id%>)
     </p>
+    <div id="chat-container" class='messages'>
+        <div id="messages" ></div>
+        <label><input class='inputt' id="chatMessage" name="chat-message" placeholder="Message..." /></label>
+      </div>
+    <div class='gamesTable'>
+        <p class='cards'><span></span></p>
+        <p class='card'><span></span></p>
+        <p class='color-1'></p>
+    </div>
 </body>
 </html>

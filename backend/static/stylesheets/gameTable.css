@@ -1,0 +1,37 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  background: url(https://i.imgur.com/9xOcjjG.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 1.3em;
+}
+.gamesTable {
+  border-radius: 25px;
+  width: 1000px;
+  height: 500px;
+  background: green;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gamesTable .cards {
+  border-radius: 5px;
+  width: 100px;
+  height: 150px;
+  background: blue;
+}
+
+.card {
+  height: 180px;
+  width: 121px;
+  background-image: url(/image/uno_deck.png);
+}
+
+.card.color-1 {
+  background-position-y: -150px;
+}
