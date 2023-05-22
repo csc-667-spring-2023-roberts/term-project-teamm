@@ -19,6 +19,9 @@ const DISCARD =
 // };
 
 const list = async (user_id) => await db.any(LIST_QUERY, [user_id]);
+// const {exists} = async () => await db.one(
+//   'SELECT EXISTS (SELECT 1 FROM game_deck LIMIT 1)'
+// ) ;
 
 const create = async (user_id) => {
   const { id } = await db.one(
@@ -28,59 +31,67 @@ const create = async (user_id) => {
     "INSERT INTO game_users (user_id, game_id,current_player) VALUES ($1,$2,true)",
     [user_id, id]
   );
-  //comment this out after creating first game
-  const unoDeck = [];
-
-  const colors = ["1", "2", "3", "4"];
-  const numbers = [
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ];
-
-  let cardId = 1;
-
-  colors.forEach((color, colorIndex) => {
-    numbers.forEach((number) => {
-      unoDeck.push({ id: cardId, color: colorIndex + 1, number: number });
-      cardId++;
-    });
-  });
-
-  unoDeck.push(
-    ...Array.from({ length: 4 }, () => ({
-      id: cardId++,
-      color: 0,
-      number: "13",
-    }))
-  );
-
-  unoDeck.push(
-    ...Array.from({ length: 4 }, () => ({
-      id: cardId++,
-      color: 0,
-      number: "14",
-    }))
-  );
-
-  console.log(unoDeck);
-
-  for (const card of unoDeck) {
-    db.none(
-      "INSERT INTO game_deck (id, card_color,card_number) VALUES ($1, $2, $3)",
-      [card.id, card.color, card.number]
+  const exists = async () => {
+    const result = await db.one(
+      "SELECT EXISTS (SELECT 1 FROM game_deck LIMIT 1)"
     );
-    const values = [card.id, card.color, card.number];
+    return result.exists;
+  };
+  if (!exists) {
+    //comment this out after creating first game
+    const unoDeck = [];
+
+    const colors = ["1", "2", "3", "4"];
+    const numbers = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+    ];
+
+    let cardId = 1;
+
+    colors.forEach((color, colorIndex) => {
+      numbers.forEach((number) => {
+        unoDeck.push({ id: cardId, color: colorIndex + 1, number: number });
+        cardId++;
+      });
+    });
+
+    unoDeck.push(
+      ...Array.from({ length: 4 }, () => ({
+        id: cardId++,
+        color: 0,
+        number: "13",
+      }))
+    );
+
+    unoDeck.push(
+      ...Array.from({ length: 4 }, () => ({
+        id: cardId++,
+        color: 0,
+        number: "14",
+      }))
+    );
+
+    console.log(unoDeck);
+
+    for (const card of unoDeck) {
+      db.none(
+        "INSERT INTO game_deck (id, card_color,card_number) VALUES ($1, $2, $3)",
+        [card.id, card.color, card.number]
+      );
+      const values = [card.id, card.color, card.number];
+    }
   }
   //comment out to this line
   await db.none(INITIAL_DECK, [id]);
