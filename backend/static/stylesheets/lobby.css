@@ -161,3 +161,15 @@ span {
     margin-top: -80px;
   
 }
+.messages{
+  background: rgba(1, 11, 1, 0.3);
+  width: clamp(500px, 10vw, 1000px);
+}
+.button:after {
+  background: rgba(1, 11, 1, 0.9);
+  width: clamp(500px, 10vw, 1000px);
+}
+.messages:hover:after{
+  background: rgba(1, 11, 1, 0.9);
+  width: clamp(500px, 10vw, 1000px);
+}
